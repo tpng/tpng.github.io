@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Recent Content on my new hugo site </title>
+      <generator uri="https://hugo.spf13.com">Hugo</generator>
+    <link>http://yourSiteHere/index.xml/</link>
+    <language>en-us</language>
+    
+    
+    <updated>Tue, 11 Nov 2014 17:22:51 CST</updated>
+    
+    <item>
+      <title>Docker data volumes with non-root user</title>
+      <link>http://yoursitehere/post/docker-data-volumes-with-non-root-user/</link>
+      <pubDate>Tue, 11 Nov 2014 17:22:51 CST</pubDate>
+      
+      <guid>http://yoursitehere/post/docker-data-volumes-with-non-root-user/</guid>
+      <description>&lt;p&gt;One way of using docker volumes with non-root user, with camlistore as an example.
+camlistored is built beforehand with &lt;code&gt;go run make.go -docker_camlistored&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Dockerfile:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;FROM busybox
+
+# create user for camlistore data storage
+# use 3179 as uid to avoid collision
+RUN adduser -u 3179 -D camli
+USER camli
+COPY camlistored /home/camli/camlistored
+WORKDIR /home/camli
+RUN mkdir -p .config/camlistore \
+        &amp;amp;&amp;amp; mkdir -p var/camlistore
+VOLUME [&amp;quot;/home/camli/.config/camlistore&amp;quot;, &amp;quot;/home/camli/var/camlistore&amp;quot;]
+EXPOSE 3179
+CMD [&amp;quot;./camlistored&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Build the images and run the containers: (e.g. user/camlistore)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo docker create --name camlistore-data user/camlistore true
+sudo docker run -d --name camlistore -p 3179:3179 --volumes-from camlistore-data user/camlistore
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Keypoints:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Create a specific user (e.g. camli)&lt;/li&gt;
+&lt;li&gt;Create directories for the volumes with that user before running VOLUME (i.e. &lt;code&gt;USER camli&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;Create the data container&lt;/li&gt;
+&lt;li&gt;Run the server container mounting the volumes from the data container with &amp;ndash;volumes-from&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Release deleted files held by processes</title>
+      <link>http://yoursitehere/post/release-deleted-files-held-by-processes/</link>
+      <pubDate>Tue, 11 Nov 2014 17:21:23 CST</pubDate>
+      
+      <guid>http://yoursitehere/post/release-deleted-files-held-by-processes/</guid>
+      <description>&lt;pre&gt;&lt;code&gt;lsof +L1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After finding the process holding your file, you can kill the process and release the deleted file.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>ODBC String data, right truncation</title>
+      <link>http://yoursitehere/post/odbc-string-data-right-truncation/</link>
+      <pubDate>Tue, 11 Nov 2014 17:20:40 CST</pubDate>
+      
+      <guid>http://yoursitehere/post/odbc-string-data-right-truncation/</guid>
+      <description>&lt;p&gt;One cause is stored proc parameters size not large enough.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Java default encoding</title>
+      <link>http://yoursitehere/post/java-default-encoding/</link>
+      <pubDate>Tue, 11 Nov 2014 17:19:49 CST</pubDate>
+      
+      <guid>http://yoursitehere/post/java-default-encoding/</guid>
+      <description>&lt;pre&gt;&lt;code&gt;java -Dfile.encoding=big5 ...
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Allow legacy site to run on IE11</title>
+      <link>http://yoursitehere/post/allow-legacy-site-run-ie11/</link>
+      <pubDate>Tue, 11 Nov 2014 17:18:22 CST</pubDate>
+      
+      <guid>http://yoursitehere/post/allow-legacy-site-run-ie11/</guid>
+      <description>&lt;p&gt;Add header &lt;code&gt;X-UA-Compatible: IE=5&lt;/code&gt; in web server.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Rotate sendmail log</title>
+      <link>http://yoursitehere/post/rotate-sendmail-log/</link>
+      <pubDate>Tue, 11 Nov 2014 17:16:24 CST</pubDate>
+      
+      <guid>http://yoursitehere/post/rotate-sendmail-log/</guid>
+      <description>&lt;pre&gt;&lt;code&gt;/etc/init.d/syslog restart
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

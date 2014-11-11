@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title> Docker data volumes with non-root user &middot; my new hugo site </title>
+
+  
+  <link rel="stylesheet" href="http://yoursitehere/css/poole.css">
+  <link rel="stylesheet" href="http://yoursitehere/css/syntax.css">
+  <link rel="stylesheet" href="http://yoursitehere/css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="my new hugo site" />
+</head>
+
+<body>
+
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>my new hugo site</h1>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="/">Home</a> </li>
+      
+    </ul>
+
+    <p>&copy; 2014. All rights reserved. </p>
+  </div>
+</div>
+
+
+    <div class="content container">
+<div class="post">
+  <h1>Docker data volumes with non-root user</h1>
+  <span class="post-date">Tue, Nov 11, 2014</span>
+      <p>One way of using docker volumes with non-root user, with camlistore as an example.
+camlistored is built beforehand with <code>go run make.go -docker_camlistored</code>.</p>
+
+<p>Dockerfile:</p>
+
+<pre><code>FROM busybox
+
+# create user for camlistore data storage
+# use 3179 as uid to avoid collision
+RUN adduser -u 3179 -D camli
+USER camli
+COPY camlistored /home/camli/camlistored
+WORKDIR /home/camli
+RUN mkdir -p .config/camlistore \
+        &amp;&amp; mkdir -p var/camlistore
+VOLUME [&quot;/home/camli/.config/camlistore&quot;, &quot;/home/camli/var/camlistore&quot;]
+EXPOSE 3179
+CMD [&quot;./camlistored&quot;]
+</code></pre>
+
+<p>Build the images and run the containers: (e.g. user/camlistore)</p>
+
+<pre><code>sudo docker create --name camlistore-data user/camlistore true
+sudo docker run -d --name camlistore -p 3179:3179 --volumes-from camlistore-data user/camlistore
+</code></pre>
+
+<p>Keypoints:</p>
+
+<ol>
+<li>Create a specific user (e.g. camli)</li>
+<li>Create directories for the volumes with that user before running VOLUME (i.e. <code>USER camli</code>)</li>
+<li>Create the data container</li>
+<li>Run the server container mounting the volumes from the data container with &ndash;volumes-from</li>
+</ol>
+
+</div>
+</div>
+
+  </body>
+</html>
