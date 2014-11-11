@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-      <title>Recent Content on my new hugo site </title>
+      <title>Recent Content on Memos for my daily work </title>
       <generator uri="https://hugo.spf13.com">Hugo</generator>
-    <link>http://yourSiteHere/index.xml/</link>
+    <link>http://tpng.github.io/index.xml/</link>
     <language>en-us</language>
     
     
@@ -11,10 +11,10 @@
     
     <item>
       <title>Docker data volumes with non-root user</title>
-      <link>http://yoursitehere/post/docker-data-volumes-with-non-root-user/</link>
+      <link>http://tpng.github.io/post/docker-data-volumes-with-non-root-user/</link>
       <pubDate>Tue, 11 Nov 2014 17:22:51 CST</pubDate>
       
-      <guid>http://yoursitehere/post/docker-data-volumes-with-non-root-user/</guid>
+      <guid>http://tpng.github.io/post/docker-data-volumes-with-non-root-user/</guid>
       <description>&lt;p&gt;One way of using docker volumes with non-root user, with camlistore as an example.
 camlistored is built beforehand with &lt;code&gt;go run make.go -docker_camlistored&lt;/code&gt;.&lt;/p&gt;
 
@@ -54,10 +54,10 @@ sudo docker run -d --name camlistore -p 3179:3179 --volumes-from camlistore-data
     
     <item>
       <title>Release deleted files held by processes</title>
-      <link>http://yoursitehere/post/release-deleted-files-held-by-processes/</link>
+      <link>http://tpng.github.io/post/release-deleted-files-held-by-processes/</link>
       <pubDate>Tue, 11 Nov 2014 17:21:23 CST</pubDate>
       
-      <guid>http://yoursitehere/post/release-deleted-files-held-by-processes/</guid>
+      <guid>http://tpng.github.io/post/release-deleted-files-held-by-processes/</guid>
       <description>&lt;pre&gt;&lt;code&gt;lsof +L1
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -67,20 +67,20 @@ sudo docker run -d --name camlistore -p 3179:3179 --volumes-from camlistore-data
     
     <item>
       <title>ODBC String data, right truncation</title>
-      <link>http://yoursitehere/post/odbc-string-data-right-truncation/</link>
+      <link>http://tpng.github.io/post/odbc-string-data-right-truncation/</link>
       <pubDate>Tue, 11 Nov 2014 17:20:40 CST</pubDate>
       
-      <guid>http://yoursitehere/post/odbc-string-data-right-truncation/</guid>
+      <guid>http://tpng.github.io/post/odbc-string-data-right-truncation/</guid>
       <description>&lt;p&gt;One cause is stored proc parameters size not large enough.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Java default encoding</title>
-      <link>http://yoursitehere/post/java-default-encoding/</link>
+      <link>http://tpng.github.io/post/java-default-encoding/</link>
       <pubDate>Tue, 11 Nov 2014 17:19:49 CST</pubDate>
       
-      <guid>http://yoursitehere/post/java-default-encoding/</guid>
+      <guid>http://tpng.github.io/post/java-default-encoding/</guid>
       <description>&lt;pre&gt;&lt;code&gt;java -Dfile.encoding=big5 ...
 &lt;/code&gt;&lt;/pre&gt;
 </description>
@@ -88,20 +88,20 @@ sudo docker run -d --name camlistore -p 3179:3179 --volumes-from camlistore-data
     
     <item>
       <title>Allow legacy site to run on IE11</title>
-      <link>http://yoursitehere/post/allow-legacy-site-run-ie11/</link>
+      <link>http://tpng.github.io/post/allow-legacy-site-run-ie11/</link>
       <pubDate>Tue, 11 Nov 2014 17:18:22 CST</pubDate>
       
-      <guid>http://yoursitehere/post/allow-legacy-site-run-ie11/</guid>
+      <guid>http://tpng.github.io/post/allow-legacy-site-run-ie11/</guid>
       <description>&lt;p&gt;Add header &lt;code&gt;X-UA-Compatible: IE=5&lt;/code&gt; in web server.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Rotate sendmail log</title>
-      <link>http://yoursitehere/post/rotate-sendmail-log/</link>
+      <link>http://tpng.github.io/post/rotate-sendmail-log/</link>
       <pubDate>Tue, 11 Nov 2014 17:16:24 CST</pubDate>
       
-      <guid>http://yoursitehere/post/rotate-sendmail-log/</guid>
+      <guid>http://tpng.github.io/post/rotate-sendmail-log/</guid>
       <description>&lt;pre&gt;&lt;code&gt;/etc/init.d/syslog restart
 &lt;/code&gt;&lt;/pre&gt;
 </description>
